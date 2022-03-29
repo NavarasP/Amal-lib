@@ -1,0 +1,45 @@
+{% block js %}
+<script language="javascript">
+    $('#id_department_select').change(function() {populateCar(this)});
+    // $('#id_subject').addClass('subjects');
+
+    department={{ form.department | safe }}
+    subject={{ form.subject | safe }}
+    subjectid={{ form.subjectid | safe }}
+    departmentid={{ form.deptid | safe }};
+    populateBrand();
+    $("#id_department_select").empty();
+    $("#id_department_select").append('<option value="" disabled selected>First select a department</option>');
+
+
+    function populateBrand() {
+        $('#id_department_select').empty();
+        $("#id_department_select").append('<option value="" disabled selected>Select your option</option>');
+        $.each(subject, function(v) {
+            $('#id_department_select')
+                .append($("<option></option>")
+                .attr("value", subjectid[v])
+                .text(subject[v]));
+        });
+    }
+
+    function populateCar(event) {
+        subject = $("#id_department_select option:selected").text();
+        $("#id_department_select").empty();
+        $("#id_department_select").append('<option value="" disabled selected>Select your option</option>');
+        for (let [b, bdepartment] of Object.entries(departmentid)) {
+            if (b == subject) {
+                //alert(b);
+
+                for (department in bdepartment) {
+                    
+                    $('#id_department_select')
+                        .append($("<option></option>")
+                            .attr("value", bdepartment[department])
+                            .text(department[b][department]));
+                }
+            }
+        }
+    }
+</script>
+{% endblock %}
