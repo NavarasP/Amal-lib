@@ -12,6 +12,9 @@ urlpatterns = [
     path('Staffregister', views.Staffregister, name='Staffregister'),
     path('Quesadminregister', views.Quesadminregister, name='Quesadminregister'),
     path('Registrationtype', views.Registrationtype , name='Registrationtype'),
+    path('Deletequesadmin/<int:id>', views.Deletequesadmin, name='Deletequesadmin'),
+    path('Deletestaff/<int:id>', views.Deletestaff, name='Deletestaff'),
+    path('Deletestudent/<int:id>', views.Deletestudent, name='Deletestudent'),
     path('Profile', views.Profile, name='Profile'),
     path('Logout',views.Logout,name='Logout'),
 ]

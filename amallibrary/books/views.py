@@ -14,9 +14,21 @@ from books.models import *
 
 
 
-class Bookstall(View):
-    def get(self,request):
-        return render(request,"books.html")  
+
+def Bookstall(request):
+    book=books.objects.all()
+    takenbook=takenbooks.objects.all()
+    var=[]
+    for i in book:
+        for j in takenbook:
+            if i.id==j.book.id:
+                var.append(j.book.id)
+                # print(j.book.id)
+    return render(request,'books.html',{
+        'book':book,
+        'takenbook':takenbook,
+        'var':var
+        })
 
 
 def Adminbook(request):
@@ -76,20 +88,6 @@ def Adminbook(request):
 
 
 
-def Viewbook(request):
-    book=books.objects.all()
-    takenbook=takenbooks.objects.all()
-    var=[]
-    for i in book:
-        for j in takenbook:
-            if i.id==j.book.id:
-                var.append(j.book.id)
-                # print(j.book.id)
-    return render(request,'books.html',{
-        'book':book,
-        'takenbook':takenbook,
-        'var':var
-        })
 
 
 def Returnbook(request,id):

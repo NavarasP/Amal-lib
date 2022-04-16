@@ -101,8 +101,10 @@ def Studentregister(request):
         return redirect('/')
     else:
         dept=department.objects.all()
+        curs=courses.objects.all()
         return render(request, 'registerstudent.html',{
             'dept':dept,
+            'curs':curs,
         })
         
 
@@ -166,6 +168,27 @@ def Quesadminregister(request):
             return render(request, 'alert.html',{'type':'Adminerror'})
     else:
         return render(request, 'alert.html',{'type':'Loginerror'})
+
+
+def Deletequesadmin(request,id):
+        book=quesadmin.objects.get(id=id)
+        book.delete()
+        return redirect('Adminquestion')
+
+def Deletestaff(request,id):
+        useracc=User.objects.get(id=id)
+        userdetail=staffs.objects.get(staff_username=id)
+        userdetail.delete()
+        useracc.delete()
+        return redirect('Adminuserview')
+
+def Deletestudent(request,id):
+        useracc=User.objects.get(id=id)
+        userdetail=students.objects.get(student_username=id)
+        userdetail.delete()
+        useracc.delete()
+        return redirect('Adminuserview')
+    
     
 
 # USER REGISTREATION ENDS HERE

@@ -26,9 +26,11 @@ def Adminblog(request):
             else:
                 postblog=BlogForm()
                 posts = Blogpost.objects.all().order_by('-id')
+                cmnt = Blogpostcomment.objects.all().order_by('-id')
                 return render(request, 'adminblog.html', {
                     'posts': posts,
                     'postblog': postblog,
+                    'cmnt': cmnt,
                     })
             
         else:
@@ -37,7 +39,30 @@ def Adminblog(request):
     else:
         return redirect('Login')
         #u r not an admin or not logged in "Alert"
-\
+
+def Deleteblog(request,id):
+
+        book=Blogpost.objects.get(id=id)
+        cmnt=Blogpostcomment.objects.filter(post=id)
+        cmnt.delete()
+        book.delete()
+        return redirect('Adminblog')
+
+def Deletecomment(request,id):
+        cmnt=Blogpostcomment.objects.get(id=id)
+        cmnt.delete()
+        return redirect('Adminblog')
+    
+
+
+
+
+
+
+
+
+
+
 
 def Bloglist(request):
     post = Blogpost.objects.all().order_by('-id')
@@ -99,11 +124,7 @@ def Addnotice(request):
 
 
 
-# def Showpost(request,id):
-#     post = Blogpost.objects.get(pk=id)
-#     return render(request, 'in.html', {
-#         'post': post,
-#         })
+
 
 def Shownotice(request,id):
     notice = Notice.objects.get(pk=id)

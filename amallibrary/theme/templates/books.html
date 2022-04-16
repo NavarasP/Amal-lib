@@ -3,7 +3,36 @@
 {% block body %}
 
 
-    
+
+    <script type="text/javascript">
+        var divs = ["Section1", "Section2", "Section3", "Section4"];
+        var visibleId = null;
+        function show(id) {
+          if(visibleId !== id) {
+            visibleId = id;
+          } 
+          hide();
+        }
+        function hide() {
+          var div, i, id;
+          for(i = 0; i < divs.length; i++) {
+            id = divs[i];
+            div = document.getElementById(id);
+            if(visibleId === id) {
+              div.style.display = "block";
+            } else {
+              div.style.display = "none";
+            }
+          }
+        }  
+     </script>
+
+
+
+
+
+
+
 
     <div class=' '>
   
@@ -26,14 +55,14 @@
                      <div class="w-full  mt-5">
                         
                          <div class=" shadow-lg p-3 bg-white rounded">
-                             <button class="bg-transparent" onclick="myFunction()" style="width: 100%;border: none;border-radius: 15px;">BOOKS</button>
+                             <button class="bg-transparent" onclick="show('Section1');" style="width: 100%;border: none;border-radius: 15px;">BOOKS</button>
                          </div>
                          
                      </div>
                      <div class="w-full mt-5">
                         
                          <div class=" shadow-lg p-3 bg-white rounded">
-                             <button class="bg-transparent" onclick="myFunction()" style="width: 100%;border: none;border-radius: 15px;">MAGAZINES</button>
+                             <button class="bg-transparent" onclick="show('Section2');" style="width: 100%;border: none;border-radius: 15px;">MAGAZINES</button>
                          </div>
                          
                         </div>
@@ -41,7 +70,7 @@
                         <div class="w-full mt-5">
                         
                             <div class=" shadow-lg p-3 bg-white rounded">
-                                <button class="bg-transparent" onclick="myFunction()" style="width: 100%;border: none;border-radius: 15px;">NEWSPAPERS</button>
+                                <button class="bg-transparent" onclick="show('Section3');" style="width: 100%;border: none;border-radius: 15px;">NEWSPAPERS</button>
                             </div>
                             
                            </div>
@@ -63,27 +92,110 @@
                            </div>
                          </div>
 
-                         <div class="col-span-8 mx-4 shadow-lg  bg-white rounded  lg:overflow-y-auto "style="background-color: white; height: 650px;border: none;border-radius: 15px">
+                         <div style="display: none;" id="Section1" class="col-span-8 mx-4 shadow-lg  bg-white rounded  lg:overflow-y-auto "style="background-color: white; height: 650px;border: none;border-radius: 15px">
                             <div class="mt-5  p-3 mb-5  grid lg:grid-cols-12"  id="demo"> 
-                                <div class="w-28 h-36 border-2  flex items-center  mb-4  justify-center">salman</div>
-                                <div class="w-28 h-36 border-2  flex items-center  mb-4  justify-center">salman</div>
-                                <div class="w-28 h-36 border-2  flex items-center  mb-4  justify-center">salman</div>
-                                <div class="w-28 h-36 border-2  flex items-center  mb-4  justify-center">salman</div>
-                                <div class="w-28 h-36 border-2  flex items-center  mb-4  justify-center">salman</div>
-                                <div class="w-28 h-36 border-2  flex items-center  mb-4  justify-center">salman</div>
-                                <div class="w-28 h-36 border-2  flex items-center  mb-4  justify-center">salman</div>
-                                <div class="w-28 h-36 border-2  flex items-center  mb-4  justify-center">salman</div>
-                                <div class="w-28 h-36 border-2  flex items-center  mb-4  justify-center">salman</div>
-                                <div class="w-28 h-36 border-2  flex items-center  mb-4  justify-center">salman</div>
-                                <div class="w-28 h-36 border-2  flex items-center  mb-4  justify-center">salman</div>
-                                <div class="w-28 h-36 border-2  flex items-center  mb-4  justify-center">salman</div>
-                                <div class="w-28 h-36 border-2  flex items-center  mb-4  justify-center">salman</div>
-                                <div class="w-28 h-36 border-2  flex items-center  mb-4  justify-center">salman</div>
-                                <div class="w-28 h-36 border-2  flex items-center  mb-4  justify-center">salman</div>
+                                {% for i in book %}
+                                <div class="w-28 h-36 border-2  flex items-center  mb-4  justify-center"><p>{{i.booknumber}}</p><p>{{i.name}}</p><p>{{i.auther}}</p></div>
+                                {% endfor %}
+                                
 
                             </div>
                         </div>
                         
+
+                        <div style="display: none;" id="Section2" class="col-span-8 mx-4 shadow-lg  bg-white rounded  lg:overflow-y-auto "style="background-color: white; height: 650px;border: none;border-radius: 15px">
+                            <div class="mt-5  p-3 mb-5  grid lg:grid-cols-12"  id="demo"> 
+                                <div class="w-28 h-36 border-2  flex items-center  mb-4  justify-center">aswin</div>
+                                <div class="w-28 h-36 border-2  flex items-center  mb-4  justify-center">aswin</div>
+                                <div class="w-28 h-36 border-2  flex items-center  mb-4  justify-center">aswin</div>
+                                <div class="w-28 h-36 border-2  flex items-center  mb-4  justify-center">aswin</div>
+                                <div class="w-28 h-36 border-2  flex items-center  mb-4  justify-center">aswin</div>
+                                <div class="w-28 h-36 border-2  flex items-center  mb-4  justify-center">aswin</div>
+                                <div class="w-28 h-36 border-2  flex items-center  mb-4  justify-center">aswin</div>
+                                <div class="w-28 h-36 border-2  flex items-center  mb-4  justify-center">aswin</div>
+                                <div class="w-28 h-36 border-2  flex items-center  mb-4  justify-center">aswin</div>
+                                <div class="w-28 h-36 border-2  flex items-center  mb-4  justify-center">aswin</div>
+                                <div class="w-28 h-36 border-2  flex items-center  mb-4  justify-center">aswin</div>
+                                <div class="w-28 h-36 border-2  flex items-center  mb-4  justify-center">aswin</div>
+                                <div class="w-28 h-36 border-2  flex items-center  mb-4  justify-center">aswin</div>
+                                <div class="w-28 h-36 border-2  flex items-center  mb-4  justify-center">aswin</div>
+                                <div class="w-28 h-36 border-2  flex items-center  mb-4  justify-center">aswin</div>
+                                <div class="w-28 h-36 border-2  flex items-center  mb-4  justify-center">aswin</div>
+                                <div class="w-28 h-36 border-2  flex items-center  mb-4  justify-center">aswin</div>
+                                <div class="w-28 h-36 border-2  flex items-center  mb-4  justify-center">aswin</div>
+                                <div class="w-28 h-36 border-2  flex items-center  mb-4  justify-center">aswin</div>
+                                <div class="w-28 h-36 border-2  flex items-center  mb-4  justify-center">aswin</div>
+                                <div class="w-28 h-36 border-2  flex items-center  mb-4  justify-center">aswin</div>
+                                <div class="w-28 h-36 border-2  flex items-center  mb-4  justify-center">aswin</div>
+                                <div class="w-28 h-36 border-2  flex items-center  mb-4  justify-center">aswin</div>
+                                <div class="w-28 h-36 border-2  flex items-center  mb-4  justify-center">aswin</div>
+                                <div class="w-28 h-36 border-2  flex items-center  mb-4  justify-center">aswin</div>
+                                <div class="w-28 h-36 border-2  flex items-center  mb-4  justify-center">aswin</div>
+                                <div class="w-28 h-36 border-2  flex items-center  mb-4  justify-center">aswin</div>
+                                <div class="w-28 h-36 border-2  flex items-center  mb-4  justify-center">aswin</div>
+                                <div class="w-28 h-36 border-2  flex items-center  mb-4  justify-center">aswin</div>
+                                <div class="w-28 h-36 border-2  flex items-center  mb-4  justify-center">aswin</div>
+                                <div class="w-28 h-36 border-2  flex items-center  mb-4  justify-center">aswin</div>
+                                <div class="w-28 h-36 border-2  flex items-center  mb-4  justify-center">aswin</div>
+                                <div class="w-28 h-36 border-2  flex items-center  mb-4  justify-center">aswin</div>
+                                <div class="w-28 h-36 border-2  flex items-center  mb-4  justify-center">aswin</div>
+                                <div class="w-28 h-36 border-2  flex items-center  mb-4  justify-center">aswin</div>
+                                <div class="w-28 h-36 border-2  flex items-center  mb-4  justify-center">aswin</div>
+                                <div class="w-28 h-36 border-2  flex items-center  mb-4  justify-center">aswin</div>
+                                <div class="w-28 h-36 border-2  flex items-center  mb-4  justify-center">aswin</div>
+                                <div class="w-28 h-36 border-2  flex items-center  mb-4  justify-center">aswin</div>
+                                <div class="w-28 h-36 border-2  flex items-center  mb-4  justify-center">aswin</div>
+                                <div class="w-28 h-36 border-2  flex items-center  mb-4  justify-center">aswin</div>
+                                <div class="w-28 h-36 border-2  flex items-center  mb-4  justify-center">aswin</div>
+                                <div class="w-28 h-36 border-2  flex items-center  mb-4  justify-center">aswin</div>
+                                <div class="w-28 h-36 border-2  flex items-center  mb-4  justify-center">aswin</div>
+                                <div class="w-28 h-36 border-2  flex items-center  mb-4  justify-center">aswin</div>
+                                <div class="w-28 h-36 border-2  flex items-center  mb-4  justify-center">aswin</div>
+                                <div class="w-28 h-36 border-2  flex items-center  mb-4  justify-center">aswin</div>
+                                <div class="w-28 h-36 border-2  flex items-center  mb-4  justify-center">aswin</div>
+                                <div class="w-28 h-36 border-2  flex items-center  mb-4  justify-center">aswin</div>
+                                <div class="w-28 h-36 border-2  flex items-center  mb-4  justify-center">aswin</div>
+                                <div class="w-28 h-36 border-2  flex items-center  mb-4  justify-center">aswin</div>
+                                <div class="w-28 h-36 border-2  flex items-center  mb-4  justify-center">aswin</div>
+                                <div class="w-28 h-36 border-2  flex items-center  mb-4  justify-center">aswin</div>
+                                <div class="w-28 h-36 border-2  flex items-center  mb-4  justify-center">aswin</div>
+                                <div class="w-28 h-36 border-2  flex items-center  mb-4  justify-center">aswin</div>
+                                <div class="w-28 h-36 border-2  flex items-center  mb-4  justify-center">aswin</div>
+                                <div class="w-28 h-36 border-2  flex items-center  mb-4  justify-center">aswin</div>
+                                <div class="w-28 h-36 border-2  flex items-center  mb-4  justify-center">aswin</div>
+                                <div class="w-28 h-36 border-2  flex items-center  mb-4  justify-center">aswin</div>
+                                <div class="w-28 h-36 border-2  flex items-center  mb-4  justify-center">aswin</div>
+
+                            </div>
+                        </div>
+
+                        
+                        <div style="display: none;" id="Section3" class="col-span-8 mx-4 shadow-lg  bg-white rounded  lg:overflow-y-auto "style="background-color: white; height: 650px;border: none;border-radius: 15px">
+                            <div class="mt-5  p-3 mb-5  grid lg:grid-cols-12"  id="demo"> 
+                                <div class="w-28 h-36 border-2  flex items-center  mb-4  justify-center">bhagyam</div>
+                                <div class="w-28 h-36 border-2  flex items-center  mb-4  justify-center">bhagyam</div>
+                                <div class="w-28 h-36 border-2  flex items-center  mb-4  justify-center">bhagyam</div>
+                                <div class="w-28 h-36 border-2  flex items-center  mb-4  justify-center">bhagyam</div>
+                                <div class="w-28 h-36 border-2  flex items-center  mb-4  justify-center">bhagyam</div>
+                                <div class="w-28 h-36 border-2  flex items-center  mb-4  justify-center">bhagyam</div>
+                                <div class="w-28 h-36 border-2  flex items-center  mb-4  justify-center">bhagyam</div>
+                                <div class="w-28 h-36 border-2  flex items-center  mb-4  justify-center">bhagyam</div>
+                                <div class="w-28 h-36 border-2  flex items-center  mb-4  justify-center">bhagyam</div>
+                                <div class="w-28 h-36 border-2  flex items-center  mb-4  justify-center">bhagyam</div>
+                                <div class="w-28 h-36 border-2  flex items-center  mb-4  justify-center">bhagyam</div>
+                                <div class="w-28 h-36 border-2  flex items-center  mb-4  justify-center">bhagyam</div>
+                                <div class="w-28 h-36 border-2  flex items-center  mb-4  justify-center">bhagyam</div>
+                                <div class="w-28 h-36 border-2  flex items-center  mb-4  justify-center">bhagyam</div>
+                                <div class="w-28 h-36 border-2  flex items-center  mb-4  justify-center">bhagyam</div>
+
+                            </div>
+                        </div>
+
+
+
+
+
+
                     </div>
 
                     
@@ -95,18 +207,13 @@
 
 
 
-         <script>
-             function myFunction() {
-                 document.getElementById("demo").innerHTML = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. <br><br><br><ul><li><li><li></ul>";
-             }
-         </script>
-         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+         
      
 
 
 
 
-         <!-- {% for i in book %}
+         {% for i in book %}
 
 
 
@@ -128,7 +235,7 @@
      
      
      {% endfor %}
-      -->
+     
 
 
 

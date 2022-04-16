@@ -4,8 +4,7 @@ from .views import *
 
 urlpatterns = [
 
-    path('Bookstall', Bookstall.as_view(), name='Bookstall'),
-    path('Viewbook', views.Viewbook, name='Viewbook'),
+    path('Bookstall', views.Bookstall, name='Bookstall'),
     path('Returnbook/<int:id>', views.Returnbook, name='Returnbook'),
     path('Editbook/<int:id>', views.Editbook, name='Editbook'),
     path('Deletebook/<int:id>', views.Deletebook, name='Deletebook'),
