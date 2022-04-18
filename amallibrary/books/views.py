@@ -70,7 +70,6 @@ def Adminbook(request):
                     return HttpResponseRedirect('Adminbook')
             else:
                 book=books.objects.all().order_by('booknumber')
-
                 takenbook=takenbooks.objects.all().order_by('book')
                 var=[]
                 for i in book:
@@ -100,8 +99,11 @@ def Renewbook(request,id):
 
 def Returnbook(request,id):
     takenbook=takenbooks.objects.get(book=id)
-    takenbook.returnstatus=True
-    takenbook.save()
+
+    track = booktakingdatabase(booknumber=takenbook.book.booknumber,username=takenbook.user.username,takendate=takenbook.date,returndate=takenbook.returndate)
+    track.save()
+    takenbook.delete()
+    
     return redirect('Adminbook')
 
 

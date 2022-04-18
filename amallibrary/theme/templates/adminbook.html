@@ -164,12 +164,43 @@
                               <p class="text-sm leading-none text-gray-600 ml-2">{{i.user}}</p>
                            </div>
                         </td>
+                        {% if i.renewalstatus == False %}
+                        <td class="pl-5">
+                           <div class="flex items-center">
+   
+                              <p class="text-sm leading-none text-gray-600 ml-2">Renewal in{{i.renewaldate}}</p>
+                           </div>
+                        </td>
+                        <td class="pl-4">
+                           <a href="{% url 'Renewbook' i.book.id %}">
+                           <button onclick=""
+                              class="focus:ring-2 focus:ring-offset-2 focus:ring-red-300 text-sm leading-none text-gray-600 py-3 px-5  rounded hover:bg-gray-200 focus:outline-none">Renew</button>
+                              </a>
+                        </td>
+                        {% else %}
+                        <td class="pl-5">
+                           <div class="flex items-center">
+   
+                              <p class="text-sm leading-none text-gray-600 ml-2">Renewed</p>
+                           </div>
+                        </td>
+
+                        {% endif %}
+
+                        <td class="pl-5">
+                           <div class="flex items-center">
+   
+                              <p class="text-sm leading-none text-gray-600 ml-2">Return in{{i.returndate}}</p>
+                           </div>
+                        </td>
+                        
                         <td class="pl-4">
                            <a href="{% url 'Returnbook' i.book.id %}">
                            <button onclick=""
                               class="focus:ring-2 focus:ring-offset-2 focus:ring-red-300 text-sm leading-none text-gray-600 py-3 px-5  rounded hover:bg-gray-200 focus:outline-none">Return</button>
                               </a>
                         </td>
+                        
    
                      </tr>
                      {% endfor %}

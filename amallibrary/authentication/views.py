@@ -133,7 +133,9 @@ def Staffregister(request):
         staff_department = request.POST['staff_department']
         staff_post = request.POST['staff_post']
         svuser = User.objects.get(id=user.id)
-        add=staffs(staff_name=staff_name,staff_username=svuser,staff_gender=staff_gender,staff_dob=staff_dob,staff_address=staff_address,staff_phone=staff_phone,staff_yearofjoin=staff_yearofjoin,staff_department=staff_department,staff_post=staff_post)
+        d = department.objects.get(department=staff_department)
+        p = posts.objects.get(post=staff_post)
+        add=staffs(staff_name=staff_name,staff_username=svuser,staff_gender=staff_gender,staff_dob=staff_dob,staff_address=staff_address,staff_phone=staff_phone,staff_yearofjoin=staff_yearofjoin,staff_department_id=d.id,staff_post_id=p.id)
         add.save()
         return redirect('/')
     else:
@@ -161,7 +163,8 @@ def Quesadminregister(request):
                 user.save()
                 quesadmin_department = request.POST['quesadmin_department']
                 svuser = User.objects.get(id=user.id)
-                add=quesadmin(quesadmin_username=svuser,quesadmin_department=quesadmin_department)
+                d = department.objects.get(department=quesadmin_department)
+                add=quesadmin(quesadmin_username=svuser,quesadmin_department_id=d.id)
                 add.save()
                 return redirect('Admindashboard')
             else:
