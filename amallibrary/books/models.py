@@ -24,17 +24,22 @@ class takenbooks(models.Model):
     book = models.ForeignKey(books, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     date = models.DateTimeField(default=datetime.datetime.now)
+    renewalstatus = models.BooleanField(default=False)
+    renewaldate = models.DateTimeField(default=timezone.now)
+    fine = models.IntegerField(default=0)
+    returnstatus = models.BooleanField(default=False)
+    returndate = models.DateTimeField(default=timezone.now)
 
     def int(self):
         return self.book
 
 
-class booktakingdatabase(models.Model):
-    booknumber = models.IntegerField()
-    username = models.CharField(max_length=100)
-    takendate = models.DateTimeField(default=datetime.datetime.now)
-    returndate = models.DateTimeField()
+# class booktakingdatabase(models.Model):
+#     booknumber = models.IntegerField()
+#     username = models.CharField(max_length=100)
+#     takendate = models.DateTimeField(default=datetime.datetime.now)
+#     returndate = models.DateTimeField()
 
-    def int(self):
-        return self.book
+#     def int(self):
+#         return self.book
 

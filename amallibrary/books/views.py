@@ -57,7 +57,7 @@ def Adminbook(request):
                     username = request.POST.get('username')
                     userid=User.objects.get(username=username)
                     if books.objects.filter(id=bookid.id).exists() and User.objects.filter(id=userid.id).exists():
-                        add=takenbooks(book_id=bookid.id,user_id=userid.id)
+                        add=takenbooks(book_id=bookid.id,user_id=userid.id,renewaldate=timezone.now()+datetime.timedelta(days=14),returndate=timezone.now()+datetime.timedelta(days=14))
                         add.save()
                         book=books.objects.all()
                         takenbook=takenbooks.objects.all()
@@ -90,9 +90,18 @@ def Adminbook(request):
 
 
 
+def Renewbook(request,id):
+    takenbook=takenbooks.objects.get(book=id)
+    takenbook.renewalstatus=True
+    takenbook.returndate = takenbook.returndate + datetime.timedelta(days=14)
+    takenbook.save()
+    return redirect('Adminbook')
+
+
 def Returnbook(request,id):
     takenbook=takenbooks.objects.get(book=id)
-    takenbook.delete()
+    takenbook.returnstatus=True
+    takenbook.save()
     return redirect('Adminbook')
 
 
