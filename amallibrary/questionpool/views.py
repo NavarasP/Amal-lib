@@ -1,7 +1,7 @@
 from django.shortcuts import redirect, render
 from django.views import View
 from django.http import HttpResponseRedirect
-from questionpool.forms import Qform
+from questionpool.forms import *
 
 from questionpool.models import *
 
@@ -11,9 +11,16 @@ from questionpool.models import *
 
 
 
-class Questionpool(View):
-    def get(self,request):
-        return render(request,"questionpool.html")
+
+def Questionpool(request):
+    if request.method == 'POST':
+        form=Qviewform(request.POST)
+        
+    else:
+        form=Qviewform()
+        return render(request,"questionpool.html",{
+            'form':form
+        })
 
 
 def Adminquestion(request):
@@ -48,7 +55,7 @@ def Addquestion(request):
             else:
                 postques=Qform()
                 dept=department.objects.all()
-                subj=subject.objects.all()
+                subj=subjects.objects.all()
                 return render(request, 'addquestion.html', {
                     'postques': postques,
                     'dept':dept,

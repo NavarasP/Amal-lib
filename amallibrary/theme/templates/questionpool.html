@@ -1,9 +1,14 @@
 {% extends 'base.html' %}
 {% load static %}
+
+
+
+
+
 {% block body %}
 
 
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
 
 
@@ -13,47 +18,15 @@
              <center>
              <h1 class='font-bold text-4xl'>QuestionBank</h1>
              <h4 class='font-semibold text-lg mt-9 mb-4'>Departments</h4>
-        <select 
-        class="text-sm w-full border-1 border-zinc-500 lg:text-base rounded-full">
-            <option value="Bachelor Of Tourism And Hotel Management">Bachelor Of Tourism And Hotel Management</option>
-            <option value="Bachelor Of Commerce">Bachelor Of Commerce</option>
-            <option value="Bachelor Of Business Administration">Bachelor Of Business Administration</option>
-            <option value="BSc Computer Science">BSc Computer Science</option>
-            <option value="BSc Maths And Physics">BSc Maths And Physics</option>
-            <option value="BSc Psychology">BSc Psychology</option>
-            <option value="BA English">BA English</option>
-            <option value="BA Economics">BA Economics</option>
-            <option value="BVOC Logistic Management">BVOC Logistic Management</option>
-        </select><br/>
+             
+
+                {{ form.department_select }}
        
-             </center>
 
-
-             <center>
-            <h4 class='font-semibold text-lg mt-5 mb-4 '>Semester</h4>
-        <select 
-        class="text-sm w-full border-1 border-zinc-500 lg:text-base rounded-full"  >
-            <option value="Semester 1">Semester 1</option>
-            <option value="Semester 2">Semester 2</option>
-            <option value="Semester 3">Semester 3</option>
-            <option value="Semester 4">Semester 4</option>
-            <option value="Semester 5">Semester 5</option>
-            <option value="Semester 6">Semester 6</option>
-        </select><br/>
-       
-        </center> 
-
- 
-        <center>
             <h4 class='font-semibold text-lg mt-5 mb-4 '>Subject</h4>
-        <select 
-        class="text-sm w-full border-1 border-zinc-500 lg:text-base rounded-full "        >
-            <option value="android">android</option>
-            <option value="java">java</option>
-            <option value="etc">etc</option>
-        </select><br/>
-        
-        <br/>
+
+            {{ form.subject_select }}
+
     
         <div class='pt-5'>
         <button class="font-semibold border-2 rounded-lg text-purple-500 border-purple-500 px-3 md:px-10 py-0.5 hover:text-green-600 hover:border-green-600">Submit</button>
@@ -86,8 +59,10 @@
 
 </div>
 
+{% block js %}
 
-
+{% include "js.html" %}
+{% endblock %}
 
 {% endblock %}
 

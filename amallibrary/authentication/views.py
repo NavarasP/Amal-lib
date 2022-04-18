@@ -96,7 +96,12 @@ def Studentregister(request):
         student_course = request.POST['student_course']
         student_department = request.POST['student_department']
         svuser = User.objects.get(id=user.id)
-        add=students(student_name=student_name,student_username=svuser,student_gender=student_gender,student_dob=student_dob,student_address=student_address,student_department=student_department,student_course=student_course,student_phone=student_phone,student_admissionnumber=student_admissionnumber,student_admissionyear=student_admissionyear)
+        c = courses.objects.get(course=student_course)
+        d = department.objects.get(department=student_department)
+        
+        # student_course = m.id
+        # print(student_course)
+        add=students(student_name=student_name,student_username=svuser,student_gender=student_gender,student_dob=student_dob,student_address=student_address,student_department_id=d.id,student_course_id=c.id,student_phone=student_phone,student_admissionnumber=student_admissionnumber,student_admissionyear=student_admissionyear)
         add.save()
         return redirect('/')
     else:

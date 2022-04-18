@@ -25,7 +25,7 @@ class courses(models.Model):
         return self.course
 
 
-class subject(models.Model):
+class subjects(models.Model):
     department = models.ForeignKey(department, on_delete=models.CASCADE)
     subject = models.CharField(max_length=100)
     def __str__(self):
