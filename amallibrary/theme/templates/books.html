@@ -4,7 +4,7 @@
 
 
 
-    <script type="text/javascript">
+    <!-- <script type="text/javascript">
         var divs = ["Section1", "Section2", "Section3", "Section4"];
         var visibleId = null;
         function show(id) {
@@ -25,7 +25,7 @@
             }
           }
         }  
-     </script>
+     </script> -->
 
 
 
@@ -46,11 +46,11 @@
 
 
 
-         <div class="w-full  h-full bg-gray-100 lg:fixed ">
+         <div class="w-full  h-full bg-gray-100  ">
          <div class="text-center  ">
             <h4 class=" text-3xl font-extrabold pt-7 pb-6">Books</h4>
-             <div class="w-full lg:mt-5 grid lg:grid-cols-12">
-                 <div class="col-span-4 w-full ml-14 md:ml-32 lg:ml-4 lg:pr-4">
+             <div class="w-full lg:mt-5 ">
+                 <!-- <div class="col-span-4 w-full ml-14 md:ml-32 lg:ml-4 lg:pr-4">
                      
                      <div class="w-full  mt-5">
                         
@@ -59,79 +59,46 @@
                          </div>
                          
                      </div>
-                     <div class="w-full mt-5">
+                      <div class="w-full mt-5">
                         
                          <div class=" shadow-lg p-3 bg-white rounded">
                              <button class="bg-transparent" onclick="show('Section2');" style="width: 100%;border: none;border-radius: 15px;">MAGAZINES</button>
                          </div>
                          
                         </div>
-                        
-                        <div class="w-full mt-5">
-                        
-                            <div class=" shadow-lg p-3 bg-white rounded">
-                                <button class="bg-transparent" onclick="show('Section3');" style="width: 100%;border: none;border-radius: 15px;">NEWSPAPERS</button>
-                            </div>
-                            
-                           </div>
 
-                           <div class="w-full mt-5">
-                        
-                            <div class=" shadow-lg p-3 bg-white rounded">
-                                <button class="bg-transparent" onclick="myFunction()" style="width: 100%;border: none;border-radius: 15px;">NOVELS</button>
-                            </div>
-                            
-                           </div>
+                         </div> -->
 
-                           <div class="w-full mt-5">
+                         
                         
-                            <div class=" shadow-lg p-3 bg-white rounded">
-                                <button class="bg-transparent" onclick="myFunction()" style="width: 100%;border: none;border-radius: 15px;">SHOP ONE</button>
-                            </div>
-                            
-                           </div>
-                         </div>
 
-                         <div style="display: none;" id="Section1" class="col-span-8 mx-4 shadow-lg  bg-white rounded  lg:overflow-y-auto "style="background-color: white; height: 650px;border: none;border-radius: 15px">
-                            <div class="mt-5  p-3 mb-5  grid lg:grid-cols-12"  id="demo"> 
+                        <div class=" mx-4 shadow-lg  bg-white rounded  lg:overflow-y-auto "style="background-color: white; height: 650px;border: none;border-radius: 15px">
+                            <div class="mt-5  p-3 mb-5  grid lg:grid-cols-12 gap-2"  id="demo"> 
                                 {% for i in book %}
-                                <div class="w-28 h-36 border-2  flex items-center  mb-4  justify-center"><p>{{i.booknumber}}</p><p>{{i.name}}</p><p>{{i.auther}}</p></div>
-                                {% endfor %}
+                                <div class="w-24 h-36 border-2 flex items-center  mb-4  justify-center ">
+                                <img class="w-24 h-36" src="{% static '/img/amallib.jpg' %}"/>
+                                <h1 class="absolute text-white font-semibold ">{{i.name}}</h1>
+                                <h1 class="absolute text-white font-semibold mt-7">{{i.author}}</h1>
+                                <h1 class="absolute text-white font-semibold pt-14">{{i.booknumber}}</h1>
                                 
-
-                            </div>
-                        </div>
-                        
-
-                        <div style="display: none;" id="Section2" class="col-span-8 mx-4 shadow-lg  bg-white rounded  lg:overflow-y-auto "style="background-color: white; height: 650px;border: none;border-radius: 15px">
-                            <div class="mt-5  p-3 mb-5  grid lg:grid-cols-12"  id="demo"> 
-                                <div class="w-28 h-36 border-2  flex items-center  mb-4  justify-center">aswin</div>
-                                <div class="w-28 h-36 border-2  flex items-center  mb-4  justify-center">aswin</div>
-                                <div class="w-28 h-36 border-2  flex items-center  mb-4  justify-center">aswin</div>
+                                </div>
+                                {% endfor %}
+                                <div class="w-24 h-36 border-2 border-black  flex items-center  mb-4  justify-center">aswin</div>
+                                <div class="w-24 h-36 border-2  flex items-center  mb-4  justify-center">aswin</div>
                              
 
                             </div>
                         </div>
-
-                        
-                        <div style="display: none;" id="Section3" class="col-span-8 mx-4 shadow-lg  bg-white rounded  lg:overflow-y-auto "style="background-color: white; height: 650px;border: none;border-radius: 15px">
-                            <div class="mt-5  p-3 mb-5  grid lg:grid-cols-12"  id="demo"> 
-                                <div class="w-28 h-36 border-2  flex items-center  mb-4  justify-center">bhagyam</div>
-                                <div class="w-28 h-36 border-2  flex items-center  mb-4  justify-center">bhagyam</div>
-                                <div class="w-28 h-36 border-2  flex items-center  mb-4  justify-center">bhagyam</div>
-                 
-                            </div>
-                        </div>
-
-
-
-
 
 
                     </div>
 
                     
              </div>
+            
+
+
+
 
              
          </div>
